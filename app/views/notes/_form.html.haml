@@ -1,0 +1,11 @@
+= form_for note do |f|
+  = if f.object.errors.any?
+    %ul.errors
+      - f.object.errors.full_messages.each do |msg|
+        %li= msg
+  .field
+    = f.text_field :name, placeholder: true
+  .field
+    = f.text_area :body, placeholder: true
+  .actions
+    = f.submit

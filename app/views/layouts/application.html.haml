@@ -1,0 +1,18 @@
+!!!
+%html
+  %head
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    %title ScrawlSite
+    = csrf_meta_tags
+    = stylesheet_link_tag    'application', media: 'all'
+    = javascript_include_tag 'application'
+  %body
+    %header
+      %span
+        Welcome
+        %i= current_user&.email
+        ,
+      = link_to 'Logout', sign_out_path, method: :delete
+    .page_wrapper
+
+      = yield

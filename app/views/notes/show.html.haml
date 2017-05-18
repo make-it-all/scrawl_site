@@ -1,0 +1,7 @@
+= link_to '< Back', notes_path
+%hr
+
+%h1.title= @note.name
+= raw @note.body
+%br
+%i= time_ago_in_words @note.updated_at

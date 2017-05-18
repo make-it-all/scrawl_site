@@ -1,0 +1,6 @@
+
+= link_to 'New Note', new_note_path, class: 'action'
+%table
+  - @notes.each do |note|
+    %tr
+      %td= link_to note.name, note

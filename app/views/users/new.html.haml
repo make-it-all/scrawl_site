@@ -1,0 +1,11 @@
+#clearance.sign-up
+  %h2= t(".title")
+  = form_for @user do |f|
+    .field
+      = f.email_field :email, placeholder: true
+    .field
+      = f.password_field :password, placeholder: true
+    .actions
+      = f.submit
+    .other-links
+      = link_to 'Login', sign_in_path

@@ -1,0 +1,17 @@
+#clearance.sign-in
+  - if flash.any?
+    .error_container
+      - flash.each do |_, msg|
+        %span= msg
+  %h2= 'Login'
+  = form_for :session, url: session_path do |f|
+    .field
+      = f.email_field :email, value: @email, placeholder: true
+    .field
+      = f.password_field :password, placeholder: true, class: 'with_errors'
+    .actions
+      = f.submit 'Login'
+    .other-links
+      - if Clearance.configuration.allow_sign_up?
+        = link_to 'Sign Up', sign_up_path
+      = link_to t(".forgot_password"), new_password_path
