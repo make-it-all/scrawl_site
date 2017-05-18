@@ -3,15 +3,16 @@ class NotesController < ApiBaseController
   before_action :set_note, only: %i[show create update destroy]
 
   def sync
-    params.to_unsafe_h.each do |_, note|
+    notes_json = JSON.parse params[:notes]
+    notes_json.each do |_, note|
       id = note.delete('remote_id')
-      if  id == -1
+      if id.to_i == -1
         current_user.notes.create(note)
       else
         current_user.notes.find(id).update(note)
       end
     end
-    render json: {message: current_user.notes}
+    json_response({notes: current_user.notes})
   end
 
   def index

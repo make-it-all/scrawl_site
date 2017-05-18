@@ -8,8 +8,50 @@
     = stylesheet_link_tag    'application', media: 'all'
     = javascript_include_tag 'application'
   %body
+    :sass
+      img
+        max-width: 50%
+      h1
+        font-size: 1.7rem
+        margin: 16px 0
+
+      h2
+        font-size: 1.1rem
+        font-weight: normal
+        margin: 8px 0
+        text-decoration: underline
     .page_wrapper
 
-      %h1 Help
+      %h1 User Guide
 
-      %p This is the help guide
+      %h2 Sign In Screen:-
+      %p To log into the app, enter your email address and password and hit the ‘Login’ button. If either field is incorrect an error will be displayed, otherwise you will be directed to the main view.
+      %p To create an account, press the ‘Sign Up’ button. You will be redirected to our website via your phone's browser whereby you will be able to create a new account.
+      %p If you forget your password, the ‘Forgot Password?’ button can be used to send an email to your email address.
+
+      %img{src: '1.png'}
+
+      %h2 Main View:-
+      %p The main view displays a list of all of your created notes. Your notes are arranged in date order with the exception of any starred notes, which are always displayed at the top of the list. To favourite a note, press and hold on the note you wish to favourite.
+      %p A new note can be created by pressing on the ‘+’ button in the lower right corner of the screen, upon which, you will be directed to the new note.
+      %p A note can be deleted by swiping it to either the left or the right, if you accidentally delete a note, it can be recovered by pressing the ‘undo’ button within the deletion confirmation at the bottom of the screen.
+
+      %img{src: '2.png'}
+
+      %h2 Settings:-
+      %p The settings page allows you to control when you device syncs your notes to our external cloud storage, whether on wifi and mobile data, or just wifi.
+      %p From this page you can also logout of your account.
+
+      %img{src: '3.png'}
+
+      %h2 Edit note:-
+      %p After you create a note you will be sent to the edit note page. This page allows you to add any styled content to your note. There is a tick in the top left of the page which allows you to save the note and send you to the view page.
+
+      %img{src: '4.png'}
+
+      %h2 View note:-
+      %p The View page allows you to view any previously made notes. Here you can change the title of your note by pressing on the current title. You can also enter the Edit Note page by pressing the pink pen icon in the bottom right.
+      %p Pressing on the 3 dots in the top right opens a submenu which allows you to delete the note.
+      %p Pressing on the connection icon to the left of the 3 dots allows you to share the current note over many forms of messenger/social media services.
+
+      %img{src: '5.png'}
