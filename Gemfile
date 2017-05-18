@@ -7,7 +7,6 @@ end
 
 
 gem 'rails', '~> 5.1.0'
-gem 'sqlite3'
 gem 'puma', '~> 3.7'
 gem 'pg'
 
@@ -19,6 +18,7 @@ gem 'uglifier', '>= 1.3.0'
 gem 'clearance'
 
 group :development, :test do
+  gem 'sqlite3'
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
 end
 
