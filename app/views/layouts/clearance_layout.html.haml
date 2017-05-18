@@ -9,6 +9,7 @@
   %body
     .clearance_page_wrapper
       .page_content
-        .logo= image_tag 'logo'
+        .logo
+          %img{src: '/logo.png'}
         = yield
       %h1 Scrawl
