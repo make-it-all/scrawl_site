@@ -4,9 +4,14 @@ class ApplicationController < ActionController::Base
 
   before_action :require_login
 
-  before_action do
+  layout :layout_for_clearance
+
+
+  def layout_for_clearance
     if self.class <= Clearance::SessionsController
-      layout :clearance_layout
+      'clearance_layout'
+    else
+      'application'
     end
   end
 end
