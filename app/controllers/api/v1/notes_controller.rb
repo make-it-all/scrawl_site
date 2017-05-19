@@ -3,16 +3,25 @@ class NotesController < ApiBaseController
   before_action :set_note, only: %i[show create update destroy]
 
   def sync
+    # x = false
+    #
+    # return unless x
     notes_json = JSON.parse params[:notes]
-    notes_json.each do |_, note|
+    new_remote_notes = {}
+    notes_json.each do |local_id, note|
       id = note.delete('remote_id')
       if id.to_i == -1
-        current_user.notes.create(note)
+        new_note = current_user.notes.create(note)
+        new_remote_notes[local_id] = new_note.id
       else
-        current_user.notes.find(id).update(note)
+        note['updated_at'] = DateTime.strptime(note['updated_at'][0..-4], '%s')
+        saved_note = current_user.notes.find_by(id: id)
+        if saved_note.updated_at < note['updated_at']
+          saved_note.update(note)
+        end
       end
     end
-    json_response({notes: current_user.notes})
+    json_response({notes: current_user.notes, new_notes: new_remote_notes})
   end
 
   def index
